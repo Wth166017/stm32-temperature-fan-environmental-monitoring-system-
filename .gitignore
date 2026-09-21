@@ -1,0 +1,26 @@
+# ===== Keil MDK 编译产物（不提交）=====
+Objects/
+Listings/
+DebugConfig/
+*.o
+*.crf
+*.d
+*.dep
+*.lst
+*.map
+*.htm
+*.lnp
+*.iex
+*.sct
+*.bak
+*.uvguix.*
+*.uvgui.*
+*.log
+
+# ===== 用户工程文件（保留）=====
+# project.uvprojx   ← 工程文件，保留
+# project.uvoptx    ← 调试配置，保留
+
+# ===== 系统/编辑器杂项 =====
+.DS_Store
+Thumbs.db
