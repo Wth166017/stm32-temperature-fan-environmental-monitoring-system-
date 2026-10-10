@@ -720,6 +720,36 @@
               <FileType>5</FileType>
               <FilePath>..\environmental monitoring system/Hardware\Motor.h</FilePath>
             </File>
+            <File>
+              <FileName>Serial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>Serial.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Serial.h</FilePath>
+            </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Key.c</FilePath>
+            </File>
+            <File>
+              <FileName>Key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Key.h</FilePath>
+            </File>
+            <File>
+              <FileName>DS18B20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\DS18B20.c</FilePath>
+            </File>
+            <File>
+              <FileName>DS18B20.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\DS18B20.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -744,6 +774,11 @@
               <FileName>Time.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\environmental monitoring system/System\Time.h</FilePath>
+            </File>
+            <File>
+              <FileName>config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\config.h</FilePath>
             </File>
           </Files>
         </Group>

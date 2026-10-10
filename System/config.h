@@ -27,6 +27,19 @@
 #define OLED_SCL_GPIO_PIN       GPIO_Pin_8
 #define OLED_SDA_GPIO_PORT      GPIOB
 #define OLED_SDA_GPIO_PIN       GPIO_Pin_9
+// 串口 USART1（方向①：温度打印到电脑）
+#define SERIAL_TX_GPIO_PORT     GPIOA
+#define SERIAL_TX_GPIO_PIN      GPIO_Pin_9
+#define SERIAL_RX_GPIO_PORT     GPIOA
+#define SERIAL_RX_GPIO_PIN      GPIO_Pin_10
+// 按键（方向③：菜单交互。上拉输入：默认高电平，按下接地=低电平）
+#define KEY_UP_GPIO_PORT        GPIOB
+#define KEY_UP_GPIO_PIN         GPIO_Pin_0
+#define KEY_DOWN_GPIO_PORT      GPIOB
+#define KEY_DOWN_GPIO_PIN       GPIO_Pin_10
+// DS18B20 数字温度传感器（单总线，开漏输出+模块自带4.7k上拉）
+#define DS18B20_GPIO_PORT       GPIOB
+#define DS18B20_GPIO_PIN        GPIO_Pin_1
 
 /* ==================== 二、应用参数（业务逻辑） ==================== */
 /* ---- 温度阈值（滞回控制） ---- */
@@ -35,12 +48,30 @@
 /* ---- 风扇 ---- */
 #define FAN_SPEED               50        // 风扇速度（占空比百分比 0~100）
 /* ---- 主循环 ---- */
-#define MAIN_LOOP_PERIOD_MS     200        // 主循环轮询周期 (ms)
+#define MAIN_LOOP_PERIOD_MS     100        // 主循环轮询周期 (ms)
 /* ---- LED 闪烁 ---- */
 #define LED_BLINK_HALF_MS       500       // 闪烁半周期 (ms)：500→亮0.5s灭0.5s=1s周期
+/* ---- 串口 ---- */
+#define SERIAL_BAUDRATE         9600     // 波特率。接 HC-05 蓝牙（默认9600）时可改 9600 免配 AT
+#define SERIAL_SEND_PERIOD_MS   3000     // 温度上报间隔(ms)：1000=每秒1条；嫌快改大、嫌慢改小
+/* ---- 按键交互 ---- */
+#define KEY_DEBOUNCE_MS         10        // 消抖时间 (ms)：按下后等这么久再确认，防抖动
+#define KEY_LONG_PRESS_MS       800       // 长按判定时间 (ms)：按住超过它算长按
+/* ---- 菜单可调参数范围（按键调节的上下限） ---- */
+#define MENU_STEP               1         // 每按一次调节量（℃ 或 %）
+#define ON_THRESH_MIN           20.0f     // 启动阈值下限
+#define ON_THRESH_MAX           60.0f     // 启动阈值上限
+#define OFF_THRESH_MIN          15.0f     // 停止阈值下限
+#define OFF_THRESH_MAX          59.0f     // 停止阈值上限
+#define SPEED_MIN               0         // 速度下限
+#define SPEED_MAX               100       // 速度上限
 
-/* ==================== 三、传感器参数（NTC 热敏电阻） ==================== */
-/* 换 NTC 型号时改这一组 */
+/* ==================== 三、传感器参数 ==================== */
+/* ---- DS18B20 数字温度传感器（当前使用） ---- */
+#define DS18B20_CONVERT_MS      800        // 12位转换等待(ms)：规格750ms，留50ms裕量
+#define DS18B20_TEMP_FACTOR     0.0625f    // 12位分辨率：原始值 1 LSB = 0.0625℃
+
+/* ---- NTC 热敏电阻（已废弃，保留备查；换用 DS18B20 后不再参与编译调用） ---- */
 #define ADC_VREF                3.3f       // ADC 参考电压 (V)
 #define ADC_MAX_VALUE            4095.0f   // 12位 ADC 满量程
 #define NTC_R1_OHM              10000.0f   // 模块内分压电阻 R1 (Ω)
